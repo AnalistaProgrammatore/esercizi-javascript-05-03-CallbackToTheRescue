@@ -36,7 +36,7 @@ function CArray(numElements) {
     }
     this.insertionSort = function () {
         let temp, inner;
-        for (var outer = 1; outer <= this.dataStore.length - 1; ++outer) {
+        for (let outer = 1; outer <= this.dataStore.length - 1; ++outer) {
             temp = this.dataStore[outer];
             inner = outer;
             while (inner > 0 && (this.dataStore[inner - 1] >= temp)) {
@@ -47,7 +47,7 @@ function CArray(numElements) {
         }
     }
     this.selectionSort = function () {
-        var min, temp;
+        let min, temp;
         for (let outer = 0; outer <= this.dataStore.length - 2; ++outer) {
             min = outer;
             for (let inner = outer + 1; inner <= this.dataStore.length - 1; ++inner) {
