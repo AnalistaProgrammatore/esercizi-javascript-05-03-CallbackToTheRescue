@@ -1,26 +1,24 @@
+//Avevo interpretato male lo svolgimento dell'esercizio, pensando che la divisione per 0 doveva ritornare  tramite reduce tutti gli altri
+//valori precedenti, mea culpa. Ho ripostato la versione corretta.
+
 let calculator = {
-    set values(values) {
-        this.a = values[0]
-        this.b = values[1]
+    values: [],
+    add: function () {
+        return this.values.reduce((acc, val) => acc + val)
     },
-    add() {
-        return this.a + this.b
+    sub: function () {
+        return this.values.reduce((acc, val) => acc - val)
     },
-    sub() {
-        return this.a - this.b
+    mul: function () {
+        return this.values.reduce((acc, val) => acc * val)
     },
-    mul() {
-        return this.a * this.b
-    },
-    div() {
-        if (this.b === 0) {
-            const arr = [this.add(), this.sub(), this.mul()]
-            return arr.reduce((acc, val) => [...acc, val], [])
-        } else { return this.a / this.b }
+    div: function () {
+        const [...a] = this.values
+        return (a.includes(0)) ? 'You cannot divide by zero' : this.values.reduce((acc, val) => acc / val)
     }
 }
 
-calculator.values = [10, 0]
+calculator.values = [10, 5, 0]
 console.log(calculator.add())
 console.log(calculator.sub())
 console.log(calculator.mul())
